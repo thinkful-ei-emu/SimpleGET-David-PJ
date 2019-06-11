@@ -4,25 +4,22 @@
 //stored input
 const handleSubmission = function(){ $('.js-display').click(event => {
   event.preventDefault();
-  console.log('button pressed');
   const input = $('.js-input').val();
   fetchData(input);
 });
 };
 
 const fetchData = function(num){
-  let url = 'https://dog.ceo/dog-api/documentation/random/3';
-  // url+= num;
+  let url = 'https://dog.ceo/dog-api/documentation/random/';
+  url+= num;
   const option = {mode: 'no-cors'};
-  fetch(url,option)
-    .then(response => response.json())
-    .then(jsonData => createData(jsonData))
-    .catch(error => console.log(url));
+  fetch(url, option).then(data => data.json()).then(obj => console.log(obj));
+
 };
 
 const createData = function(jsonData){
   let messages = jsonData.message;
-  console.log(messages);
+  console.log(jsonData);
   // return messages.map(getImg).join('');
 };
 
