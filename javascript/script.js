@@ -9,12 +9,10 @@ const handleSubmission = function(){ $('.js-display').click(event => {
 });
 };
 
-function fetchData() {
-  fetch('https://dog.ceo/api/breeds/image/random/3')
-    .then(response => response.json())
-    .then(responseJson => 
-      createData(responseJson))
-    .catch(error => alert('Something went wrong. Try again later.'));
+function fetchData(input) {
+  let url = 'https://dog.ceo/api/breeds/image/random/';
+  url += input;
+  fetch(url).then(data => data.json()).then(obj => createData(obj));
 }
 
 
