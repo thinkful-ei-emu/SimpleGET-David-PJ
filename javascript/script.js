@@ -9,20 +9,23 @@ const handleSubmission = function(){ $('.js-display').click(event => {
 });
 };
 
-const fetchData = function(num){
-  let url = 'https://dog.ceo/dog-api/documentation/random/';
-  url+= num;
-  const option = {mode: 'no-cors'};
-  fetch(url, option).then(data => data.json()).then(obj => console.log(obj));
+function fetchData() {
+  fetch('https://dog.ceo/api/breeds/image/random/3')
+    .then(response => response.json())
+    .then(responseJson => 
+      createData(responseJson))
+    .catch(error => alert('Something went wrong. Try again later.'));
+}
 
-};
 
 const createData = function(jsonData){
   let messages = jsonData.message;
-  console.log(jsonData);
-  // return messages.map(getImg).join('');
+  console.log(jsonData.message);
+  addHTML(messages.map(getImg).join(''));
 };
-
+function addHTML(theHtml){
+  $('.js-results').append(theHtml);
+}
 const getImg = function(src) {
   return `<img src="${src}"/>`;
 };
