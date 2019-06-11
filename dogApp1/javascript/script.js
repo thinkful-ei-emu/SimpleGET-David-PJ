@@ -5,7 +5,11 @@
 const handleSubmission = function(){ $('.js-display').click(event => {
   event.preventDefault();
   const input = $('.js-input').val();
-  fetchData(input);
+  if(input > 50 || input < 1 ){
+    alert('please enter a value between 1 and 50');
+  }else{
+    fetchData(input); 
+  }
 });
 };
 
