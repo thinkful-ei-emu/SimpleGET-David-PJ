@@ -22,7 +22,11 @@ const createData = function(jsonData){
   addHTML(messages.map(getImg).join(''));
 };
 function addHTML(theHtml){
-  $('.js-results').append(theHtml);
+  console.log('adding imgs');
+  let result = '<section class="js-results">';
+  result += theHtml;
+  result += '</section>';
+  $('.js-results').replaceWith(result);
 }
 const getImg = function(src) {
   return `<img src="${src}"/>`;
